@@ -18,12 +18,26 @@ Route::get('/', function () {
     return view('pages.auth.login');
 });
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('home', function () {
-//         return view('pages.dashboard');
-//     })->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function () {
+        return view('pages.dashboard');
+    })->name('home');
 
-//     Route::resource('user', UserController::class);
-//     Route::resource('product', \App\Http\Controllers\ProductController::class);
-//     Route::resource('order', \App\Http\Controllers\OrderController::class);
-// });
+    // Profile Routes
+    Route::get('/profile', function () {
+        return view('profile.index');
+    })->name('profile');
+    
+    Route::get('/profile/activities', function () {
+        return view('profile.activities');
+    })->name('profile.activities');
+    
+    Route::get('/profile/settings', function () {
+        return view('profile.settings');
+    })->name('profile.settings');
+
+    // Resource Routes
+    Route::resource('user', UserController::class);
+    Route::resource('product', \App\Http\Controllers\ProductController::class);
+    Route::resource('order', \App\Http\Controllers\OrderController::class);
+});
