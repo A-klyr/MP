@@ -54,11 +54,22 @@ class UserController extends Controller
         $data = $request->validated();
 
         // bila password diisi, update. Jika tidak, abaikan
+        // bila password diisi, update. Jika tidak, abaikan
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         } else {
             unset($data['password']);
         }
+
+        // Handle location data (ensure they are included in $data)
+        // $request->validated() already includes them because we will update the request validation rules next step, 
+        // OR we can manually merge them if not in rules yet. 
+        // For now, let's assume valid data comes in. 
+        // Best practice: Update UpdateUserRequest to validate these fields.
+        
+        // For quick implementation, we can just ensure they are passed if we use all() or validated().
+        // Since we used validated(), we MUST update the Request class. 
+        // Let's check UpdateUserRequest first.
 
         $user->update($data);
 

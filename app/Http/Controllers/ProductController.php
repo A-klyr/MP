@@ -59,9 +59,31 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $request->validate([
+            'name' => 'required|min:3|unique:products,name,' . $id,
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+            'category' => 'required|in:food,drink,snack',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        ]);
+
         $product = \App\Models\Product::findOrFail($id);
+        $data = $request->except('image');
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($product->image && \Illuminate\Support\Facades\Storage::exists('public/products/' . $product->image)) {
+                 \Illuminate\Support\Facades\Storage::delete('public/products/' . $product->image);
+            }
+
+            // Upload new image
+            $filename = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/products', $filename);
+            $data['image'] = $filename;
+        }
+
         $product->update($data);
+
         return redirect()->route('product.index')->with('success', 'Product successfully updated');
     }
 

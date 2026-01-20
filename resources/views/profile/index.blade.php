@@ -3,90 +3,133 @@
 @section('title', 'Profile')
 
 @section('main')
-<div class="main-content">
-    <section class="section">
-        <div class="section-header">
-            <h1>Profile</h1>
-        </div>
-
-        <div class="section-body">
-            <div class="row">
-                <div class="col-12">
-    <div class="max-w-4xl mx-auto">
-        <!-- Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-800">Profile</h1>
-            <p class="text-gray-600 mt-2">Kelola informasi profil Anda</p>
-        </div>
-
-        <!-- Profile Information Card -->
-        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-xl font-semibold mb-4">Informasi Profil</h2>
-            
-            <form action="{{ route('user-profile-information.update') }}" method="POST">
-                @csrf
-                @method('PUT')
-
-                <!-- Avatar -->
-                <div class="flex items-center mb-6">
-                    <div class="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center text-2xl font-bold text-white">
-                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="font-semibold text-lg">{{ Auth::user()->name }}</h3>
-                        <p class="text-gray-600 text-sm">{{ Auth::user()->email }}</p>
-                    </div>
-                </div>
-
-                <!-- Name Field -->
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama</label>
-                    <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        required>
-                    @error('name')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Email Field -->
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        required>
-                    @error('email')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Submit Button -->
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                        Simpan Perubahan
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <!-- Account Information -->
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-xl font-semibold mb-4">Informasi Akun</h2>
-            <div class="space-y-3">
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">Member sejak</span>
-                    <span class="font-medium">{{ Auth::user()->created_at->format('d M Y') }}</span>
-                </div>
-                <div class="flex justify-between py-2 border-b">
-                    <span class="text-gray-600">Status Akun</span>
-                    <span class="font-medium text-green-600">Aktif</span>
-                </div>
-                <div class="flex justify-between py-2">
-                    <span class="text-gray-600">ID Pengguna</span>
-                    <span class="font-medium">#{{ Auth::user()->id }}</span>
+    <div class="main-content">
+        <section class="section">
+            <div class="section-header">
+                <h1>Profile</h1>
+                <div class="section-header-breadcrumb">
+                    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+                    <div class="breadcrumb-item">Profile</div>
                 </div>
             </div>
-        </div>
+
+            <div class="section-body">
+                <h2 class="section-title">Hi, {{ Auth::user()->name }}!</h2>
+                <p class="section-lead">
+                    Change information about yourself on this page.
+                </p>
+
+                <div class="row mt-sm-4">
+                    <div class="col-12 col-md-12 col-lg-5">
+                        <div class="card profile-widget">
+                            <div class="profile-widget-header">
+                                <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
+                                    class="rounded-circle profile-widget-picture">
+                                <div class="profile-widget-items">
+                                    <div class="profile-widget-item">
+                                        <div class="profile-widget-item-label">Posts</div>
+                                        <div class="profile-widget-item-value">187</div>
+                                    </div>
+                                    <div class="profile-widget-item">
+                                        <div class="profile-widget-item-label">Followers</div>
+                                        <div class="profile-widget-item-value">6,8K</div>
+                                    </div>
+                                    <div class="profile-widget-item">
+                                        <div class="profile-widget-item-label">Following</div>
+                                        <div class="profile-widget-item-value">2,1K</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-widget-description">
+                                <div class="profile-widget-name">{{ Auth::user()->name }} <div
+                                        class="text-muted d-inline font-weight-normal">
+                                        <div class="slash"></div> {{ Auth::user()->roles }}
+                                    </div>
+                                </div>
+                                {{ Auth::user()->bio ?? 'Please fill your bio in settings.' }}
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Account Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="py-2">
+                                    <p class="clearfix">
+                                        <span class="float-left">
+                                            Member since
+                                        </span>
+                                        <span class="float-right text-muted">
+                                            {{ Auth::user()->created_at->format('d M Y') }}
+                                        </span>
+                                    </p>
+                                    <p class="clearfix">
+                                        <span class="float-left">
+                                            Phone
+                                        </span>
+                                        <span class="float-right text-muted">
+                                            {{ Auth::user()->phone ?? '-' }}
+                                        </span>
+                                    </p>
+                                    <p class="clearfix">
+                                        <span class="float-left">
+                                            Status
+                                        </span>
+                                        <span class="float-right text-muted">
+                                            Active
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-7">
+                        <div class="card">
+                            <form method="POST" action="{{ route('user-profile-information.update') }}"
+                                class="needs-validation" novalidate="">
+                                @csrf
+                                @method('PUT')
+                                <div class="card-header">
+                                    <h4>Edit Profile</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-6 col-12">
+                                            <label>Name</label>
+                                            <input type="text" name="name" class="form-control"
+                                                value="{{ Auth::user()->name }}" required="">
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6 col-12">
+                                            <label>Email</label>
+                                            <input type="email" name="email" class="form-control"
+                                                value="{{ Auth::user()->email }}" required="">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <label>Bio</label>
+                                            <textarea class="form-control summernote-simple" name="bio">{{ Auth::user()->bio ?? '' }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</div>
 @endsection

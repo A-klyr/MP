@@ -26,6 +26,9 @@ class UpdateUserRequest extends FormRequest
             'email' => 'required|email',
             'phone' => 'required',
             'roles' => 'required',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'address' => 'nullable|string',
         ];
     }
 }

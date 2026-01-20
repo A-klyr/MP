@@ -1,0 +1,118 @@
+/* Comfortable Theme override for Stisla */
+
+/* General overrides to soften the look */
+body {
+    background-color: #e8ecf1;
+    /* Darker soft gray background */
+    color: #495057;
+}
+
+/* Primary Color - Soft Slate/Blue */
+.bg-primary {
+    background-color: #5a72a0 !important;
+}
+
+.text-primary,
+.text-primary-all *,
+.text-primary-all *:before,
+.text-primary-all *:after {
+    color: #5a72a0 !important;
+}
+
+a {
+    color: #5a72a0;
+}
+
+a:hover {
+    color: #405580;
+}
+
+/* Optimize Buttons */
+.btn-primary {
+    background-color: #5a72a0;
+    border-color: #5a72a0;
+    box-shadow: 0 2px 6px #acb5c4;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #405580 !important;
+    border-color: #405580 !important;
+}
+
+/* Sidebar - Cream/Off-white instead of stark white */
+.main-sidebar {
+    background-color: #f7f9fc;
+    /* Soft off-white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.main-sidebar .sidebar-menu li.active a {
+    color: #5a72a0;
+    background-color: #e3e9f4;
+}
+
+.main-sidebar .sidebar-menu li a:hover {
+    color: #5a72a0;
+    background-color: #eff2f8;
+}
+
+/* Navbar */
+.navbar-bg {
+    background-color: #5a72a0;
+}
+
+/* Cards - Softer background, not pure white */
+.card {
+    background-color: #ffffff;
+    /* Keep content readable or go very slight off-white #fafbfe */
+    box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Inputs - Slightly softer background */
+.form-control {
+    background-color: #fdfdff;
+    border-color: #e4e6fc;
+}
+
+.card .card-header h4 {
+    color: #5a72a0;
+}
+
+/* Form inputs - Softer borders */
+.form-control:focus {
+    border-color: #aeb9cc;
+    box-shadow: 0 0 0 0.2rem rgba(90, 114, 160, 0.25);
+}
+
+/* Tables */
+.table:not(.table-sm):not(.table-md):not(.dataTable) td,
+.table:not(.table-sm):not(.table-md):not(.dataTable) th {
+    padding: 0 25px;
+    height: 60px;
+    vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fbfcfd;
+    /* Very subtle stripe */
+}
+
+/* Badges - Softer pastel tones */
+.badge.badge-primary {
+    background-color: #5a72a0;
+}
+
+.badge.badge-success {
+    background-color: #6ab04c;
+}
+
+.badge.badge-warning {
+    background-color: #f0932b;
+}
+
+.badge.badge-danger {
+    background-color: #eb4d4b;
+}

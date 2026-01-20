@@ -85,4 +85,23 @@ class AuthController extends Controller
             'message' => 'Logout success',
         ]);
     }
+
+    //update profile (for location)
+    public function updateProfile(Request $request)
+    {
+        $data = $request->validate([
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'address' => 'nullable|string',
+        ]);
+
+        $user = $request->user();
+        $user->update($data);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Profile updated',
+            'user' => $user,
+        ]);
+    }
 }

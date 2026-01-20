@@ -23,6 +23,7 @@ Route::post('login', [\App\Http\Controllers\Api\AuthController::class, 'login'])
 
 // post logout
 Route::post('logout', [\App\Http\Controllers\Api\AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('update-profile', [\App\Http\Controllers\Api\AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
 
 // api resource product
 Route::apiResource('products', \App\Http\Controllers\Api\ProductController::class)->middleware('auth:sanctum');

@@ -108,6 +108,55 @@
 
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label>Location</label>
+                                <div id="map" style="height: 300px; width: 100%; margin-bottom: 15px;"></div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Latitude</label>
+                                        <input type="text" id="latitude" name="latitude" class="form-control" value="{{ $user->latitude }}">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Longitude</label>
+                                        <input type="text" id="longitude" name="longitude" class="form-control" value="{{ $user->longitude }}">
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <label>Address</label>
+                                    <textarea name="address" class="form-control" style="height: 80px;">{{ $user->address }}</textarea>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    // Default coordinates (Jakarta) or User's coordinates
+                                    var lat = {{ $user->latitude ?? -6.2088 }};
+                                    var lng = {{ $user->longitude ?? 106.8456 }};
+                                    
+                                    var map = L.map('map').setView([lat, lng], 13);
+                                    
+                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        attribution: '&copy; OpenStreetMap contributors'
+                                    }).addTo(map);
+
+                                    var marker = L.marker([lat, lng], {draggable: true}).addTo(map);
+
+                                    // Update inputs when marker is dragged
+                                    marker.on('dragend', function(e) {
+                                        var position = marker.getLatLng();
+                                        document.getElementById('latitude').value = position.lat;
+                                        document.getElementById('longitude').value = position.lng;
+                                    });
+
+                                    // Move marker on map click
+                                    map.on('click', function(e) {
+                                        marker.setLatLng(e.latlng);
+                                        document.getElementById('latitude').value = e.latlng.lat;
+                                        document.getElementById('longitude').value = e.latlng.lng;
+                                    });
+                                });
+                            </script>
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
