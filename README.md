@@ -1,66 +1,242 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📱 Backend Laravel - Flutter Mobile Integration
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **Dokumentasi Bukti Integrasi Backend Laravel dengan Aplikasi Mobile Flutter**
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Daftar Isi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Tentang Proyek](#-tentang-proyek)
+- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
+- [Fitur yang Terintegrasi](#-fitur-yang-terintegrasi)
+- [Screenshot Aplikasi Mobile](#-screenshot-aplikasi-mobile)
+- [API Endpoints](#-api-endpoints)
+- [Cara Menjalankan](#-cara-menjalankan)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🎯 Tentang Proyek
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Proyek ini merupakan sistem **Point of Sale (POS)** yang terdiri dari:
+- **Backend**: Laravel 10 dengan REST API
+- **Frontend Mobile**: Flutter
+- **Autentikasi**: Laravel Sanctum
+- **Database**: MySQL/PostgreSQL
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Backend Laravel telah berhasil dikonfigurasi dan terintegrasi dengan aplikasi mobile Flutter, memungkinkan operasi CRUD produk, manajemen order, dan fitur-fitur POS lainnya.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🛠 Teknologi yang Digunakan
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Backend (Laravel)
+- Laravel 10
+- Laravel Sanctum (API Authentication)
+- MySQL Database
+- RESTful API Architecture
 
-### Premium Partners
+### Mobile (Flutter)
+- Flutter SDK
+- HTTP Package untuk API Integration
+- State Management
+- Responsive UI Design
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## ✨ Fitur yang Terintegrasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. 🏠 Home & Product Management
+- ✅ Menampilkan semua produk dari backend
+- ✅ Filter produk berdasarkan kategori (Food, Drink, Snack)
+- ✅ Real-time data synchronization
 
-## Code of Conduct
+### 2. 🔍 Search Product
+- ✅ Pencarian produk secara real-time
+- ✅ Filter dan sorting produk
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. 🛒 Order Management
+- ✅ Membuat order baru
+- ✅ Menampilkan detail order
+- ✅ Sync data order ke server
 
-## Security Vulnerabilities
+### 4. 📦 Product Management
+- ✅ Kelola produk (Create, Read, Update, Delete)
+- ✅ Upload gambar produk
+- ✅ Update stock dan harga
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 5. 📊 History & Reports
+- ✅ Riwayat transaksi
+- ✅ Data order history dari server
 
-## License
+### 6. ⚙️ Settings
+- ✅ Konfigurasi aplikasi
+- ✅ User profile management
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 📸 Screenshot Aplikasi Mobile
+
+### 1. Home - Semua Produk
+![Home - All Products](./screenshot/home-ALL.jpeg)
+*Tampilan home menampilkan semua produk yang diambil dari backend Laravel*
+
+---
+
+### 2. Home - Filter Kategori Food
+![Home - Category Food](./screenshot/home-category.jpeg)
+*Filter produk berdasarkan kategori Food*
+
+---
+
+### 3. Home - Filter Kategori Drink
+![Home - Category Drink](./screenshot/home-category2.jpeg)
+*Filter produk berdasarkan kategori Drink*
+
+---
+
+### 4. Home - Filter Kategori Snack
+![Home - Category Snack](./screenshot/home-category3.jpeg)
+*Filter produk berdasarkan kategori Snack*
+
+---
+
+### 5. Search Product
+![Search Product](./screenshot/search.jpeg)
+*Fitur pencarian produk secara real-time dari database*
+
+---
+
+### 6. Order Management
+![Order Page](./screenshot/order.jpeg)
+*Halaman order untuk membuat transaksi baru*
+
+---
+
+### 7. Product Management
+![Kelola Product](./screenshot/kelola-product.jpeg)
+*Halaman kelola produk dengan fitur CRUD lengkap*
+
+---
+
+### 8. History Transaksi
+![History](./screenshot/history.jpeg)
+*Riwayat transaksi yang tersimpan di backend*
+
+---
+
+### 9. Settings
+![Settings](./screenshot/settings.jpeg)
+*Halaman pengaturan aplikasi dan user profile*
+
+---
+
+## 🔌 API Endpoints
+
+Backend Laravel menyediakan API endpoints berikut:
+
+### Authentication
+```
+POST   /api/login          - Login user
+POST   /api/logout         - Logout user
+POST   /api/update-profile - Update user profile
+```
+
+### Products
+```
+GET    /api/products       - Get all products
+POST   /api/products       - Create new product
+GET    /api/products/{id}  - Get product detail
+PUT    /api/products/{id}  - Update product
+DELETE /api/products/{id}  - Delete product
+```
+
+### Orders
+```
+GET    /api/orders         - Get all orders
+POST   /api/orders         - Create new order
+GET    /api/orders/{id}    - Get order detail
+PUT    /api/orders/{id}    - Update order
+DELETE /api/orders/{id}    - Delete order
+```
+
+> **Note**: Semua endpoint (kecuali login) memerlukan autentikasi menggunakan Laravel Sanctum token.
+
+---
+
+## 🚀 Cara Menjalankan
+
+### Backend Laravel
+
+1. **Clone repository**
+   ```bash
+   git clone <repository-url>
+   cd backendposmobilelaravel
+   ```
+
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
+
+3. **Setup environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Setup database**
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
+
+5. **Run server**
+   ```bash
+   php artisan serve --host=0.0.0.0 --port=8000
+   npm run dev
+   ```
+
+### Mobile Flutter
+
+1. **Setup Flutter project**
+   ```bash
+   cd <flutter-project-directory>
+   flutter pub get
+   ```
+
+2. **Konfigurasi API URL**
+   - Update base URL di file konfigurasi Flutter
+   - Sesuaikan dengan IP address backend Laravel
+
+3. **Run aplikasi**
+   ```bash
+   flutter run
+   ```
+
+---
+
+## 📝 Catatan Penting
+
+- ✅ Backend Laravel sudah berjalan di `http://0.0.0.0:8000`
+- ✅ API sudah terintegrasi dengan aplikasi mobile Flutter
+- ✅ Autentikasi menggunakan Laravel Sanctum
+- ✅ Database sudah di-seed dengan data dummy
+- ✅ Semua fitur CRUD produk dan order berfungsi dengan baik
+
+---
+
+## 👨‍💻 Developer
+
+**Proyek UAS - Mobile Programming**  
+Semester 5 - 2026
+
+---
+
+## 📄 License
+
+This project is for educational purposes.
+
+---
+
+**Last Updated**: February 2, 2026

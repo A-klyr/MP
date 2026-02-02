@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -72,7 +73,46 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = \App\Models\Product::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        $request->validate([
+            'name' => 'required|min:3',
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+            'category' => 'required|in:food,drink,snack',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'price' => (int) $request->price,
+            'stock' => (int) $request->stock,
+            'category' => $request->category,
+            'is_favorite' => $request->is_favorite ?? $product->is_favorite
+        ];
+
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/products', $filename);
+            
+            // Delete old image
+            if ($product->image) {
+                Storage::delete('public/products/' . $product->image);
+            }
+            
+            $data['image'] = $filename;
+        }
+
+        $product->update($data);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Product Updated',
+            'data' => $product
+        ], 200);
     }
 
     /**
